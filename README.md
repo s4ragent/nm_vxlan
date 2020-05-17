@@ -4,7 +4,8 @@ sudo nmcli connection add type vxlan id 10 con-name vxlan0 ifname vxlan0 dev eth
 
 git clone https://github.com/s4ragent/nm_vxlan
 
-sudo cp nm_vxlan/09_vxlan /etc/NetworkManager/dispatcher.d/09_vxlan
+cd nm_vxlan
+sudo cp 09_vxlan /etc/NetworkManager/dispatcher.d/09_vxlan
 
 sudo chmod +x /etc/NetworkManager/dispatcher.d/09_vxlan
 
