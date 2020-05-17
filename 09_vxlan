@@ -1,6 +1,17 @@
 #!/bin/sh
 
-
+rdev=eth0
+iplist="10.153.1.4 10.153.1.5 10.153.1.6"
 
 interface=$1
 status=$2
+myip=`ip addr show $rdev | grep 'inet ' | awk -F '[/ ]' '{print $6}'`
+
+if [[ $interface =~ vxlan* ] && [ $status == "up" ]]; then
+	for ip in iplist;
+	do
+		if [ "$ip" != "$myip" ]; then
+			bridge fdb append 00:00:00:00:00:00 dev $vdev dst $ip
+		fi
+	done
+fi
