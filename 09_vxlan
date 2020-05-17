@@ -11,7 +11,7 @@ if [[ $interface =~ vxlan* ]] && [[ $status == "up" ]]; then
 	for ip in $iplist;
 	do
 		if [ "$ip" != "$myip" ]; then
-			bridge fdb append 00:00:00:00:00:00 dev $vdev dst $ip
+			bridge fdb append 00:00:00:00:00:00 dev $interface dst $ip
 		fi
 	done
 fi
