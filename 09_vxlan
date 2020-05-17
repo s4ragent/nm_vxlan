@@ -7,7 +7,7 @@ interface=$1
 status=$2
 myip=`ip addr show $rdev | grep 'inet ' | awk -F '[/ ]' '{print $6}'`
 
-if [ $interface =~ vxlan* ] && [ $status == "up" ]; then
+if [[ $interface =~ vxlan* ]] && [[ $status == "up" ]]; then
 	for ip in iplist;
 	do
 		if [ "$ip" != "$myip" ]; then
